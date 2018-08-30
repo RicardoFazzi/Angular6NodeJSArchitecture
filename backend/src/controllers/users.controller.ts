@@ -1,6 +1,7 @@
 import {Request, Response} from 'express';
 import {getMongoManager, getManager} from 'typeorm';
 import {UserEntity} from '../entities/user';
+import * as bcrypt from 'bcrypt';
 
 export default class UsersController {
   getUsers(req: Request, res: Response) {
@@ -14,10 +15,13 @@ export default class UsersController {
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.username;
-    user.password = req.body.password;
-    getManager().getRepository(UserEntity).save(user).then((response: any) => {
-      console.log(response);
-      res.send(response);
-    })
+    bcrypt.hash(req.body.password, 10)
+      .then((hash) => {
+        user.password = hash;
+        getManager().getRepository(UserEntity).save(user).then((response: any) => {
+          console.log(response);
+          res.send(response);
+        })
+      })
   }
 }

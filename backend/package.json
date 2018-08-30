@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "tsc && node dist/app.js"
+    "start": "tsc && node dist/app.js",
+    "start-debug": "node dist/app.js"
   },
   "dependencies": {
+    "@types/bcrypt": "^2.0.0",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
