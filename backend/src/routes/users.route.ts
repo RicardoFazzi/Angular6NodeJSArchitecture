@@ -5,6 +5,7 @@ export let UsersRouter = express.Router();
 let usersController = new UsersController();
 
 UsersRouter.get('/', usersController.getUsers);
-UsersRouter.post('/', usersController.createUser);
+UsersRouter.post('/register', usersController.createUser);
+
 
 

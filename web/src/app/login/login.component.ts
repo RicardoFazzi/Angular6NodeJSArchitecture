@@ -26,4 +26,8 @@ export class LoginComponent {
       );
   }
 
+  createUser() {
+    this.router.navigate(['createUser']);
+  }
+
 }

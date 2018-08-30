@@ -11,9 +11,10 @@ export default class UsersController {
 
   async createUser(req: Request, res: Response) {
     let user = new UserEntity();
-    user.firstName = 'pablo';
-    user.lastName = 'Herrera';
-    user.email = 'mail@hotmail.com';
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.email = req.body.username;
+    user.password = req.body.password;
     getManager().getRepository(UserEntity).save(user).then((response: any) => {
       console.log(response);
       res.send(response);

@@ -13,4 +13,8 @@ export class UserService {
   getUsers() {
     return this.http.get<any>('http://localhost:3000/users');
   }
+
+  register(user: any) {
+    return this.http.post('http://localhost:3000/users/register', user);
+  }
 }

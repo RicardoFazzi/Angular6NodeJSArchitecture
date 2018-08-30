@@ -17,19 +17,22 @@ import {
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MyDashboardComponent} from './my-dashboard/my-dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
-import {UserService} from './services/user.service';
+import {UserService} from './user/user.service';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './services/auth.guard';
 import {AppRoutes} from './app.routes';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
+import {httpInterceptorProviders} from './interceptors';
+import {CreateUserComponent} from './user/create-user/create-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyNavComponent,
-    MyDashboardComponent,
+    CreateUserComponent,
     LoginComponent,
+    MyDashboardComponent,
+    MyNavComponent,
   ],
   imports: [
     AppRoutes,
@@ -53,9 +56,10 @@ import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
     NoopAnimationsModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule
   ],
-  providers: [AuthGuard, JwtHelperService, UserService],
+  providers: [AuthGuard, httpInterceptorProviders, JwtHelperService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
