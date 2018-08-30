@@ -22,7 +22,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './services/auth.guard';
 import {AppRoutes} from './app.routes';
 import {FormsModule} from '@angular/forms';
-import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
+import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,13 @@ import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        }
+      }
+    }),
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,

@@ -7,10 +7,10 @@ import {MyDashboardComponent} from '../my-dashboard/my-dashboard.component';
 })
 export class UserService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
   getUsers() {
-    return this.httpClient.get<any>('http://localhost:3000/users');
+    return this.http.get<any>('http://localhost:3000/users');
   }
 }

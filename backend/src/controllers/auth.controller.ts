@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
-
-const jwt = require('jsonwebtoken');
+import * as jwt from 'jsonwebtoken'
 
 export default class AuthController {
 

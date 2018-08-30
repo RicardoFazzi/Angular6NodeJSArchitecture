@@ -1,11 +1,12 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as logger from 'morgan';
-import {UsersRouter} from './routes/users.route';
 import {createConnection} from 'typeorm';
-import {UserEntity} from './entities/user';
 import * as cors from 'cors';
+import * as expressJwt from 'express-jwt';
+import {UserEntity} from './entities/user';
 import {AuthRouter} from './routes/auth.route';
+import {UsersRouter} from './routes/users.route';
 
 /**
  * Create Express server.
@@ -36,15 +37,15 @@ createConnection({
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
+app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/login']}));
 
 /**
  * Primary app routes.
  */
 app.use('/users', UsersRouter);
 app.use('/login', AuthRouter);
-
 /**
  * Start Express server.
  */
