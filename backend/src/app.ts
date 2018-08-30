@@ -1,4 +1,6 @@
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import * as logger from 'morgan';
 import {UsersRouter} from './routes/users.route';
 import {createConnection} from 'typeorm';
 import {UserEntity} from './entities/user';
@@ -31,7 +33,9 @@ createConnection({
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
-
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 /**
