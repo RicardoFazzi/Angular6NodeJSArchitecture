@@ -5,6 +5,7 @@ import {UsersRouter} from './routes/users.route';
 import {createConnection} from 'typeorm';
 import {UserEntity} from './entities/user';
 import * as cors from 'cors';
+import {AuthRouter} from './routes/auth.route';
 
 /**
  * Create Express server.
@@ -42,6 +43,7 @@ app.use(cors());
  * Primary app routes.
  */
 app.use('/users', UsersRouter);
+app.use('/login', AuthRouter);
 
 /**
  * Start Express server.

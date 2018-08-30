@@ -18,16 +18,24 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {MyDashboardComponent} from './my-dashboard/my-dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './services/user.service';
+import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './services/auth.guard';
+import {AppRoutes} from './app.routes';
+import {FormsModule} from '@angular/forms';
+import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyNavComponent,
-    MyDashboardComponent
+    MyDashboardComponent,
+    LoginComponent,
   ],
   imports: [
+    AppRoutes,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     LayoutModule,
     MatToolbarModule,
@@ -40,7 +48,7 @@ import {UserService} from './services/user.service';
     MatCardModule,
     MatMenuModule
   ],
-  providers: [UserService],
+  providers: [AuthGuard, JwtHelperService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
