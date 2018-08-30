@@ -1,6 +1,6 @@
 import * as express from 'express';
 import {UsersRouter} from './routes/users.route';
-import {createConnection, Connection} from "typeorm";
+import {createConnection, Connection} from 'typeorm';
 import {UserEntity} from './entities/user';
 
 /**
@@ -9,10 +9,10 @@ import {UserEntity} from './entities/user';
 const app = express();
 
 let connection = createConnection({
-  type: "mongodb",
-  host: "localhost",
+  type: 'mongodb',
+  host: 'localhost',
   port: 27017,
-  database: "architecture",
+  database: 'architecture',
   entities: [
     UserEntity
   ],

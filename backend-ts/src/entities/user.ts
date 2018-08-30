@@ -1,10 +1,10 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, ObjectID} from 'typeorm';
 
 @Entity("user")
 export class UserEntity {
 
   @PrimaryGeneratedColumn()
-  userId: number;
+  userId: ObjectID;
 
   @Column({
     length: 100

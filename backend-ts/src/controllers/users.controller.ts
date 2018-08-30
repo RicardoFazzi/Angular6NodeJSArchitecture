@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import { getMongoManager , getManager} from 'typeorm';
-import { UserEntity } from '../entities/user';
+import {Request, Response} from 'express';
+import {getMongoManager, getManager} from 'typeorm';
+import {UserEntity} from '../entities/user';
 
 export default class UsersController {
   getUsers(req: Request, res: Response) {
@@ -14,7 +14,7 @@ export default class UsersController {
     user.firstName = 'pablo';
     user.lastName = 'Herrera';
     user.email = 'mail@hotmail.com';
-    getManager().getRepository(UserEntity).save(user).then(response: any => {
+    getManager().getRepository(UserEntity).save(user).then((response: any) => {
       console.log(response);
       res.send(response);
     })
