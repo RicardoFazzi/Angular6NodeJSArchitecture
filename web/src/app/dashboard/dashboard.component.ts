@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user/user.service';
 import {LoginService} from '../login/login.service';
+import {UserEntity} from '../entities/user';
 
 @Component({
-  selector: 'my-dashboard',
-  templateUrl: './my-dashboard.component.html',
-  styleUrls: ['./my-dashboard.component.scss']
+  selector: 'dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class MyDashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
-  public users: Array<any>;
+  public users: Array<UserEntity>;
 
   constructor(private userService: UserService, private loginService: LoginService) {
   }
@@ -19,13 +20,6 @@ export class MyDashboardComponent implements OnInit {
       this.users = value
     })
   }
-
-  cards = [
-    {title: 'Card 1', cols: 2, rows: 1},
-    {title: 'Card 2', cols: 1, rows: 1},
-    {title: 'Card 3', cols: 1, rows: 2},
-    {title: 'Card 4', cols: 1, rows: 1}
-  ];
 
   logout() {
     this.loginService.logout();

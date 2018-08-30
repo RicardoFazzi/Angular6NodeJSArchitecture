@@ -1,21 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
-import {MyNavComponent} from './my-nav/my-nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatGridListModule,
-  MatCardModule,
-  MatMenuModule
-} from '@angular/material';
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MyDashboardComponent} from './my-dashboard/my-dashboard.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './user/user.service';
 import {LoginComponent} from './login/login.component';
@@ -31,8 +19,7 @@ import {CreateUserComponent} from './user/create-user/create-user.component';
     AppComponent,
     CreateUserComponent,
     LoginComponent,
-    MyDashboardComponent,
-    MyNavComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutes,
@@ -48,15 +35,7 @@ import {CreateUserComponent} from './user/create-user/create-user.component';
       }
     }),
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
     NoopAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
     ReactiveFormsModule
   ],
   providers: [AuthGuard, httpInterceptorProviders, JwtHelperService, UserService],
