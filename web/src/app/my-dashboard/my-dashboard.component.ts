@@ -8,12 +8,12 @@ import { UserService } from '../services/user.service';
 })
 export class MyDashboardComponent implements OnInit {
 
-  public user: string;
+  public users: Array<any>;
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.userService.getUser().subscribe(value => {this.user = value})
+    this.userService.getUsers().subscribe(value => {this.users = value})
   }
 
   cards = [

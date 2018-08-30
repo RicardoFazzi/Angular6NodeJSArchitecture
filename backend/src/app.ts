@@ -1,14 +1,23 @@
 import * as express from 'express';
 import {UsersRouter} from './routes/users.route';
-import {createConnection, Connection} from 'typeorm';
+import {createConnection} from 'typeorm';
 import {UserEntity} from './entities/user';
+import * as cors from 'cors';
 
 /**
  * Create Express server.
  */
 const app = express();
 
-let connection = createConnection({
+/*const options:cors.CorsOptions = {
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+  credentials: true,
+  methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+  origin: API_URL,
+  preflightContinue: false
+};*/
+
+createConnection({
   type: 'mongodb',
   host: 'localhost',
   port: 27017,
@@ -16,18 +25,19 @@ let connection = createConnection({
   entities: [
     UserEntity
   ],
-}).then(() => {
-  /**
-   * Primary app routes.
-   */
-  app.use('/users', UsersRouter);
 });
-
 
 /**
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
+
+app.use(cors());
+
+/**
+ * Primary app routes.
+ */
+app.use('/users', UsersRouter);
 
 /**
  * Start Express server.

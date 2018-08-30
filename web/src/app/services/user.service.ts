@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getUser() {
+  getUsers() {
     return this.httpClient.get<any>('http://localhost:3000/users');
   }
 }
