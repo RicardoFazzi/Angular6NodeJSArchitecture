@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import * as jwt from 'jsonwebtoken'
 import * as bcrypt from 'bcrypt';
-import {UserEntity} from '../entities/user';
+import {UserEntity} from '../../../entities/user';
 import {getMongoManager} from 'typeorm';
 
 export default class AuthController {

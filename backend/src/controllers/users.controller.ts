@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {UserEntity} from '../entities/user';
+import {UserEntity} from '../../../entities/user';
 import * as bcrypt from 'bcrypt';
 import UsersService from '../services/users.service';
 

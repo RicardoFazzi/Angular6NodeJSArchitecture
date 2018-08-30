@@ -4,7 +4,7 @@ import * as logger from 'morgan';
 import {createConnection} from 'typeorm';
 import * as cors from 'cors';
 import * as expressJwt from 'express-jwt';
-import {UserEntity} from './entities/user';
+import {UserEntity} from '../../entities/user';
 import {AuthRouter} from './routes/auth.route';
 import {UsersRouter} from './routes/users.route';
 

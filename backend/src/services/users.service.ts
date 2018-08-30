@@ -1,4 +1,4 @@
-import {UserEntity} from '../entities/user';
+import {UserEntity} from '../../../entities/user';
 import {getManager, getMongoManager} from 'typeorm';
 import * as Promise from 'promise';
 

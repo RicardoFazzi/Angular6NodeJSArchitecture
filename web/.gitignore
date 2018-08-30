@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/src/app/entities
 
 # dependencies
 /node_modules
