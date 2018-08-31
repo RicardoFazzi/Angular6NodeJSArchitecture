@@ -1,7 +1,97 @@
-<div class="grid-container">
-  <button class="btn btn-danger" (click)="logout()">Logout</button>
-  <h1 class="mat-h1">Dashboard</h1>
-  <div *ngFor="let user of users; let idx = index">
-    <h1>{{idx+1}}: {{user.firstName}} / {{user.lastName}}</h1>
+<div class="row m-0 top-panel p-2">
+  <div class="col-5">
+    Trainer
+  </div>
+  <div class="col-7 text-right">
+    <button class="btn btn-danger" (click)="logout()">Logout</button>
   </div>
 </div>
+
+<div class="row m-0 mt-3">
+  <div class="col-8">
+    <div class="row mt-5 mb-5">
+      <div class="col-7">
+        <h4>{{loginService.loggedUser?.firstName}}</h4>
+      </div>
+      <div class="col-5 text-right">
+        <span>Scene A+</span>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6">
+        <iframe width="100%" height="250px" style="border: none;"
+                src="https://www.youtube.com/embed/aMK2-r810IQ">
+        </iframe>
+      </div>
+      <div class="col-6">
+        <iframe width="100%" height="250px" style="border: none;"
+                src="https://www.youtube.com/embed/LCPoTABRtrc">
+        </iframe>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 text-center">
+        <div class="panel double-height text-center">
+          <app-histogram></app-histogram>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-7">
+        <div class="row">
+          <div class="col-12">
+            <div class="panel single-height">
+              <span>N/A</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <div class="panel single-height">
+              <span>N/A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 pl-0">
+        <div class="panel double-height text-center">
+          <app-emotion></app-emotion>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4 pl-0">
+    <div class="panel-dark">
+      <div class="row m-0 event">
+        <div class="col-4">
+          TIME
+        </div>
+        <div class="col-8">
+          EVENT
+        </div>
+      </div>
+
+      <div *ngFor="let event of events">
+        <div class="row m-0 event">
+          <div class="col-4">
+            {{event.time}}
+          </div>
+          <div class="col-8">
+            {{event.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="float-panel">
+  <span>controls</span>
+</div>
+<!--<div class="grid-container">-->
+<!--<button class="btn btn-danger" (click)="logout()">Logout</button>-->
+<!--<h1 class="mat-h1">Dashboard</h1>-->
+<!--<div *ngFor="let user of users; let idx = index">-->
+<!--<h1>{{idx+1}}: {{user.firstName}} / {{user.lastName}}</h1>-->
+<!--</div>-->
+<!--</div>-->

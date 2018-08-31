@@ -4,11 +4,15 @@ import {Observable} from 'rxjs/internal/Observable';
 import {APP} from '../app.constants';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {UserEntity} from '../entities/user';
+import * as decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  loggedUser: UserEntity;
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -18,6 +22,8 @@ export class LoginService {
       {username: username, password: password})
       .pipe(map(result => {
           localStorage.setItem('access_token', result.token);
+          let decodedToken: any = decode(result.token);
+          this.loggedUser = decodedToken.user;
           return true;
         })
       );

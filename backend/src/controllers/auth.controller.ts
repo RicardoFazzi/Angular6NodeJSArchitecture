@@ -19,7 +19,7 @@ export default class AuthController {
         if(!auth){
           res.sendStatus(401);
         }
-        let token = jwt.sign({userID: 1}, 'todo-app-super-shared-secret', {expiresIn: '2h'});
+        let token = jwt.sign({user: user}, 'todo-app-super-shared-secret', {expiresIn: '2h'});
         res.send({token});
       });
   }

@@ -11,11 +11,16 @@ import {UserEntity} from '../entities/user';
 export class DashboardComponent implements OnInit {
 
   public users: Array<UserEntity>;
+  public events: Array<any> = [];
 
-  constructor(private userService: UserService, private loginService: LoginService) {
+  constructor(private userService: UserService, public loginService: LoginService) {
   }
 
   ngOnInit() {
+    for (let i = 0; i < 35; i++) {
+      this.events.push({time: i, name: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 15);});
+    }
+
     this.userService.getUsers().subscribe(value => {
       this.users = value
     })

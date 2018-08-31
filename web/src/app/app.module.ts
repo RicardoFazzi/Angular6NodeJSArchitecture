@@ -13,13 +13,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {JwtHelperService, JwtModule} from '@auth0/angular-jwt';
 import {httpInterceptorProviders} from './interceptors';
 import {CreateUserComponent} from './user/create-user/create-user.component';
+import { HistogramComponent } from './histogram/histogram.component';
+import { EmotionComponent } from './emotion/emotion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateUserComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    HistogramComponent,
+    EmotionComponent
   ],
   imports: [
     AppRoutes,

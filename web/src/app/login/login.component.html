@@ -1,15 +1,20 @@
-<h4 *ngIf="error">{{error}}</h4>
-<form (ngSubmit)="submit()">
-  <div class="form-group col-3">
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username" class="form-control" [(ngModel)]="username"/>
+<div class="row">
+  <div class="col-2 offset-5 mt-5">
+    <h4 *ngIf="error">{{error}}</h4>
+    <h4>Login KeyLime</h4>
+    <form (ngSubmit)="submit()" class="mt-5">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username" class="form-control" [(ngModel)]="username"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" class="form-control" [(ngModel)]="password"/>
+      </div>
+      <div class="form-group text-center mt-5">
+        <button class="btn btn-primary m-1" type="submit">Login</button>
+        <button class="btn btn-info m-1" type="button" (click)="createUser()">Create User</button>
+      </div>
+    </form>
   </div>
-  <div class="form-group col-3">
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" class="form-control" [(ngModel)]="password"/>
-  </div>
-  <div class="form-group col-3">
-    <button class="btn btn-primary" type="submit">Login</button>
-    <button class="btn btn-primary" type="button" (click)="createUser()">Create User</button>
-  </div>
-</form>
+</div>
