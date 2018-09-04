@@ -23,12 +23,21 @@ const app = express();
 
 createConnection({
   type: 'mongodb',
-  host: 'localhost',
+  url: 'mongodb://root:root_123456@ds245082.mlab.com:45082/architecture',
   port: 27017,
   database: 'architecture',
+  username: 'root',
+  password: 'root_123456',
   entities: [
     UserEntity
   ],
+}).then(() => {
+
+  /**
+   * Primary app routes.
+   */
+  app.use('/users', UsersRouter);
+  app.use('/login', AuthRouter);
 });
 
 /**
@@ -41,11 +50,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 app.use(expressJwt({secret: 'todo-app-super-shared-secret'}).unless({path: ['/login', '/users/register']}));
 
-/**
- * Primary app routes.
- */
-app.use('/users', UsersRouter);
-app.use('/login', AuthRouter);
 /**
  * Start Express server.
  */
