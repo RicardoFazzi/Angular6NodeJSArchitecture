@@ -25,9 +25,6 @@ createConnection({
   type: 'mongodb',
   url: 'mongodb://root:root_123456@ds245082.mlab.com:45082/architecture',
   port: 27017,
-  database: 'architecture',
-  username: 'root',
-  password: 'root_123456',
   entities: [
     UserEntity
   ],
