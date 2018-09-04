@@ -1,6 +1,5 @@
 <div class="row m-0">
   <div class="col-2 offset-5 mt-5">
-    <h4 *ngIf="error">{{error}}</h4>
     <h4>Login KeyLime</h4>
     <form (ngSubmit)="submit()" class="mt-5">
       <div class="form-group">
@@ -10,6 +9,9 @@
       <div class="form-group">
         <label for="password">Password</label>
         <input id="password" type="password" name="password" class="form-control" [(ngModel)]="password"/>
+      </div>
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        <strong>Oh snap!</strong> {{error}}
       </div>
       <div class="form-group text-center mt-5">
         <button class="btn btn-primary m-1" type="submit">Login</button>
