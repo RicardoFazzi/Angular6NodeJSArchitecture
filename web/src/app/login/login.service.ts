@@ -35,7 +35,7 @@ export class LoginService {
   public getLoggedUser(tokenParam?): UserEntity {
     const token = tokenParam || localStorage.getItem('access_token');
     localStorage.setItem('access_token', token);
-    let decodedToken: any = decode(token);
+    const decodedToken: any = decode(token);
     return decodedToken.user;
   }
 

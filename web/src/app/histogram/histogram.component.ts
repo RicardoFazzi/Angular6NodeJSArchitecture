@@ -1,3 +1,4 @@
+/* tslint:disable */
 import {Component, OnInit} from '@angular/core';
 import * as d3 from 'd3-selection';
 import * as d3Scale from 'd3-scale';
@@ -34,7 +35,7 @@ export class HistogramComponent implements OnInit {
   ngOnInit() {
 
     this.data = DATA.map((v) => v.values.map((v) => v.date ))[0];
-    //.reduce((a, b) => a.concat(b), []);
+    // .reduce((a, b) => a.concat(b), []);
     this.initChart();
     this.drawAxis();
     this.drawPath();
@@ -85,7 +86,7 @@ export class HistogramComponent implements OnInit {
   }
 
   private drawPath(): void {
-    let city = this.g.selectAll('.city')
+    const city = this.g.selectAll('.city')
       .data(DATA)
       .enter().append('g')
       .attr('class', 'city');
