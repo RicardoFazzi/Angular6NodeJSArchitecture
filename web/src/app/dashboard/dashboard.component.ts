@@ -4,12 +4,13 @@ import {LoginService} from '../login/login.service';
 import {UserEntity} from '../entities/user';
 
 @Component({
-  selector: 'dashboard',
+  selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
+  public loggedUser: UserEntity;
   public users: Array<UserEntity>;
   public events: Array<any> = [];
 
@@ -17,13 +18,16 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.loggedUser = this.loginService.getLoggedUser();
+
     for (let i = 0; i < 35; i++) {
-      this.events.push({time: i, name: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 15);});
+      this.events.push({time: i, name: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 15)});
     }
 
     this.userService.getUsers().subscribe(value => {
-      this.users = value
-    })
+      this.users = value;
+    });
   }
 
   logout() {

@@ -4,8 +4,8 @@ import {Observable} from 'rxjs/internal/Observable';
 import {APP} from '../app.constants';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {UserEntity} from '../entities/user';
 import * as decode from 'jwt-decode';
+import {UserEntity} from '../entities/user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,6 @@ export class LoginService {
       {username: username, password: password})
       .pipe(map(result => {
           localStorage.setItem('access_token', result.token);
-          let decodedToken: any = decode(result.token);
-          this.loggedUser = decodedToken.user;
           return true;
         })
       );
@@ -32,6 +30,13 @@ export class LoginService {
   logout() {
     localStorage.removeItem('access_token');
     this.router.navigate(['login']);
+  }
+
+  public getLoggedUser(tokenParam?): UserEntity {
+    const token = tokenParam || localStorage.getItem('access_token');
+    localStorage.setItem('access_token', token);
+    let decodedToken: any = decode(token);
+    return decodedToken.user;
   }
 
   public get loggedIn(): boolean {
