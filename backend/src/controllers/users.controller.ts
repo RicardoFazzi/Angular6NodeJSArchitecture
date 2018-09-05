@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
-import {UserEntity} from '../../../entities/user';
 import * as bcrypt from 'bcrypt';
 import UsersService from '../services/users.service';
+import {UserEntity} from '../entities/user';
 
 const userService = new UsersService();
 

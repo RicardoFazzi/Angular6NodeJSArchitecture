@@ -1,6 +1,6 @@
-import {UserEntity} from '../../../entities/user';
 import {getManager, getMongoManager} from 'typeorm';
 import * as Promise from 'promise';
+import {UserEntity} from '../entities/user';
 
 export default class UsersService {
 
